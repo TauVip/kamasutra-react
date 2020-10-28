@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
@@ -14,8 +14,8 @@ const App = () => {
         <Navbar />
 
         <div className='app-wrapper-content'>
-          <Route path='/dialogs' component={ Dialogs } />
-          <Route path='/profile' component={ Profile } />
+          <Route path='/dialogs' render={ () => <Dialogs dialogs={props.dialogs} messages={props.messages} /> } />
+          <Route path='/profile' render={ () => <Profile posts={props.posts} /> } />
         </div>
       </div>
     </BrowserRouter>
@@ -24,4 +24,4 @@ const App = () => {
 
 export default App
 
-// 26. Уроки React JS (структура проекта, ещё раз про ui - bll) - react курсы бесплатно, 2019 | 10:20 / 32:44
+// 29. Уроки React JS (упаковываем данные в state) - react курсы бесплатно, 2019
