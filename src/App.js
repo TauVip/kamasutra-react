@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Dialogs from './components/Dialogs/Dialogs';
 import Header from './components/Header/Header';
@@ -7,21 +7,19 @@ import Profile from './components/Profile/Profile';
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
 
         <Navbar />
 
         <div className='app-wrapper-content'>
-          <Route path='/dialogs' render={ () => <Dialogs dialogs={props.dialogs} messages={props.messages} /> } />
-          <Route path='/profile' render={ () => <Profile posts={props.posts} /> } />
+          <Route path='/dialogs' render={ () => <Dialogs state={props.state.dialogsPage} /> } />
+          <Route path='/profile' render={ () => <Profile state={props.state.profilePage} addPost={props.addPost} /> } />
         </div>
       </div>
-    </BrowserRouter>
   )
 }
 
 export default App
 
-// 29. Уроки React JS (упаковываем данные в state) - react курсы бесплатно, 2019
+// 32. Уроки React JS - прокидываем callback через props | 17:16 / 23:22
