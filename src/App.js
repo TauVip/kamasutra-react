@@ -14,7 +14,11 @@ const App = (props) => {
 
         <div className='app-wrapper-content'>
           <Route path='/dialogs' render={ () => <Dialogs state={props.state.dialogsPage} /> } />
-          <Route path='/profile' render={ () => <Profile state={props.state.profilePage} addPost={props.addPost} /> } />
+          <Route path='/profile' 
+            render={ () => <Profile 
+              profilePage={props.state.profilePage} 
+              addPost={props.addPost}
+              updateNewPostText={props.updateNewPostText} /> } />
         </div>
       </div>
   )
@@ -22,4 +26,4 @@ const App = (props) => {
 
 export default App
 
-// 32. Уроки React JS - прокидываем callback через props | 17:16 / 23:22
+// 34. Уроки React JS - Вынос мозга (FLUX-круговорот на каждый символ) | 29:07 / 36:27
