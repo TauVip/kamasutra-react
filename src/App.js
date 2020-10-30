@@ -26,4 +26,4 @@ const App = (props) => {
 
 export default App
 
-// 34. Уроки React JS - Вынос мозга (FLUX-круговорот на каждый символ) | 29:07 / 36:27
+// 37. Уроки, Курс React JS - store, state, ООП, рефакторинг
