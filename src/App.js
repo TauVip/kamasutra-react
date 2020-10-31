@@ -17,8 +17,7 @@ const App = (props) => {
           <Route path='/profile' 
             render={ () => <Profile 
               profilePage={props.state.profilePage} 
-              addPost={props.addPost}
-              updateNewPostText={props.updateNewPostText} /> } />
+              dispatch={props.dispatch} /> } />
         </div>
       </div>
   )
@@ -26,4 +25,4 @@ const App = (props) => {
 
 export default App
 
-// 37. Уроки, Курс React JS - store, state, ООП, рефакторинг
+// 40 - React JS Практика - добавление Сообщения | 5:23 / 53:26
