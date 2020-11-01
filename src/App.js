@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import './App.css';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
@@ -9,15 +9,16 @@ const App = (props) => {
   return (
       <div className='app-wrapper'>
         <Header />
-
         <Navbar />
-
         <div className='app-wrapper-content'>
-          <Route path='/dialogs' render={ () => <Dialogs state={props.state.dialogsPage} /> } />
-          <Route path='/profile' 
-            render={ () => <Profile 
-              profilePage={props.state.profilePage} 
-              dispatch={props.dispatch} /> } />
+          <Route 
+            path='/dialogs' 
+            render={ () => <DialogsContainer /> } 
+          />
+          <Route 
+            path='/profile' 
+            render={ () => <Profile /> } 
+          />
         </div>
       </div>
   )
@@ -25,4 +26,4 @@ const App = (props) => {
 
 export default App
 
-// 40 - React JS Практика - добавление Сообщения | 5:23 / 53:26
+// 44 - React JS Практика - Context API | 18:29 / 43:17
