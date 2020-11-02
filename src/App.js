@@ -4,8 +4,9 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
+import UsersContainer from './components/Users/UsersContainer';
 
-const App = (props) => {
+const App = () => {
   return (
       <div className='app-wrapper'>
         <Header />
@@ -15,9 +16,15 @@ const App = (props) => {
             path='/dialogs' 
             render={ () => <DialogsContainer /> } 
           />
+
           <Route 
             path='/profile' 
             render={ () => <Profile /> } 
+          />
+
+          <Route 
+            path='/users'
+            render={ () => <UsersContainer /> }
           />
         </div>
       </div>
@@ -26,4 +33,4 @@ const App = (props) => {
 
 export default App
 
-// 48 - React JS практика - Делаем копию состояния в DialogReducer | 35:55 / 42:10
+// 49 - React JS практика - страница пользователей | 57:06 / 1:02:35
