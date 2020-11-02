@@ -26,4 +26,4 @@ const App = (props) => {
 
 export default App
 
-// 44 - React JS Практика - Context API | 18:29 / 43:17
+// 48 - React JS практика - Делаем копию состояния в DialogReducer | 35:55 / 42:10
