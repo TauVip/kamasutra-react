@@ -33,4 +33,4 @@ const App = () => {
 
 export default App
 
-// 49 - React JS практика - страница пользователей | 57:06 / 1:02:35
+// 53 - React JS практика - классовый компонент (extends React.Component) | 20:42 / 35:00
