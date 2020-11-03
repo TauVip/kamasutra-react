@@ -33,4 +33,4 @@ const App = () => {
 
 export default App
 
-// 53 - React JS практика - классовый компонент (extends React.Component) | 20:42 / 35:00
+// 55 - React JS практика - pagination, постраничный вывод пользователей
