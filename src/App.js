@@ -33,4 +33,4 @@ const App = () => {
 
 export default App
 
-// 55 - React JS практика - pagination, постраничный вывод пользователей
+// 57 - React JS - пример Preloader, loader-gif, isFetching indication | 2:46 / 36:08
