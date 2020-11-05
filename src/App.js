@@ -1,15 +1,15 @@
 import { Route } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import UsersContainer from './components/Users/UsersContainer';
 
 const App = () => {
   return (
       <div className='app-wrapper'>
-        <Header />
+        <HeaderContainer />
         <Navbar />
         <div className='app-wrapper-content'>
           <Route 
@@ -18,8 +18,8 @@ const App = () => {
           />
 
           <Route 
-            path='/profile' 
-            render={ () => <Profile /> } 
+            path='/profile/:userId?' 
+            render={ () => <ProfileContainer /> } 
           />
 
           <Route 
@@ -33,4 +33,4 @@ const App = () => {
 
 export default App
 
-// 58 - React JS - mapDispatchToProps лайф-хак
+// 62 - React JS - практика, follow-unfollow api | 22:22 / 26:56
