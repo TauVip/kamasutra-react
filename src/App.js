@@ -33,4 +33,4 @@ const App = () => {
 
 export default App
 
-// 62 - React JS - практика, follow-unfollow api | 22:22 / 26:56
+// 64 - React JS - практика, button disabled (follow\unfollow)
