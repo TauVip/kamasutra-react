@@ -33,4 +33,4 @@ const App = () => {
 
 export default App
 
-// 64 - React JS - практика, button disabled (follow\unfollow)
+// 66 - React JS - урок redux-thunk в деталях (практика) | 26:57 / 40:00
