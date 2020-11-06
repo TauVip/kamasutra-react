@@ -33,4 +33,4 @@ const App = () => {
 
 export default App
 
-// 66 - React JS - урок redux-thunk в деталях (практика) | 26:57 / 40:00
+// 67 - React JS - урок redux-thunk 2 в деталях (практика) | 13:39 / 22:29
