@@ -2,6 +2,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import UsersContainer from './components/Users/UsersContainer';
@@ -26,6 +27,11 @@ const App = () => {
             path='/users'
             render={ () => <UsersContainer /> }
           />
+
+          <Route 
+            path='/login'
+            render={ () => <Login />}
+          />
         </div>
       </div>
   )
@@ -33,4 +39,4 @@ const App = () => {
 
 export default App
 
-// 67 - React JS - урок redux-thunk 2 в деталях (практика) | 13:39 / 22:29
+// 75 - React JS - redux-form введение (login) | 15:59 / 40:36
