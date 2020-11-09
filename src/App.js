@@ -39,4 +39,4 @@ const App = () => {
 
 export default App
 
-// 75 - React JS - redux-form введение (login) | 15:59 / 40:36
+// 76 - React JS - redux-form опять про базовые вещи | 17:21 / 37:21
