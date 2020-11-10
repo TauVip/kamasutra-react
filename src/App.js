@@ -39,4 +39,4 @@ const App = () => {
 
 export default App
 
-// 76 - React JS - redux-form опять про базовые вещи | 17:21 / 37:21
+// 77 - React JS - redux-form field validation (валидация, ошибки). Осторожно Замыкание! | 13:57 / 58:38
