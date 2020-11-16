@@ -58,4 +58,4 @@ const mapStateToProps = state => ({
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 84 - React JS - hook, useState, хуки | 14:30 / 38:39
+// 85 - React JS - hook, useEffect, хуки
