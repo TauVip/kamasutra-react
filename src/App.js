@@ -58,4 +58,4 @@ const mapStateToProps = state => ({
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 85 - React JS - hook, useEffect, хуки
+// 87 - shouldComponentUpdate, PureComponent, memo - React JS | 14:15 / 31:57
