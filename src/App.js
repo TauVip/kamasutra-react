@@ -23,31 +23,31 @@ class App extends Component {
     }
 
     return (
-        <div className='app-wrapper'>
-          <HeaderContainer />
-          <Navbar />
-          <div className='app-wrapper-content'>
-            <Route 
-              path='/dialogs' 
-              render={ () => <DialogsContainer /> } 
-            />
+      <div className='app-wrapper'>
+        <HeaderContainer />
+        <Navbar />
+        <div className='app-wrapper-content'>
+          <Route 
+            path='/dialogs' 
+            render={ () => <DialogsContainer /> } 
+          />
 
-            <Route 
-              path='/profile/:userId?' 
-              render={ () => <ProfileContainer /> } 
-            />
+          <Route 
+            path='/profile/:userId?' 
+            render={ () => <ProfileContainer /> } 
+          />
 
-            <Route 
-              path='/users'
-              render={ () => <UsersContainer /> }
-            />
+          <Route 
+            path='/users'
+            render={ () => <UsersContainer /> }
+          />
 
-            <Route 
-              path='/login'
-              render={ () => <LoginPage />}
-            />
-          </div>
+          <Route 
+            path='/login'
+            render={ () => <LoginPage />}
+          />
         </div>
+      </div>
     )
   }
 }
@@ -58,4 +58,4 @@ const mapStateToProps = state => ({
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 87 - shouldComponentUpdate, PureComponent, memo - React JS | 14:15 / 31:57
+// 89 - Тесты, jest, tdd, тестируем reducer - React JS | 20:09 / 27:58
