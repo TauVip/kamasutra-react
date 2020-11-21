@@ -1,4 +1,4 @@
-import profileReducer, { addPostActionCreator } from './profile-reducer';
+import profileReducer, { addPostActionCreator, deletePost } from './profile-reducer';
 
 let state = {
   posts: [
@@ -29,4 +29,15 @@ test('length of posts should be correct', () => {
 
   // 3. expectation
   expect(newState.posts[4].message).toBe('it-kamasutra.com')
+});
+
+test(`after deleting length shouldn't be decrement if id is incorrect`, () => {
+  // 1. Test data
+  let action = deletePost(1)
+
+  // 2. action
+  let newState = profileReducer(state, action)
+
+  // 3. expectation
+  expect(newState.posts.length).toBe(3)
 });

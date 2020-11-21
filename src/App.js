@@ -58,4 +58,4 @@ const mapStateToProps = state => ({
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 89 - Тесты, jest, tdd, тестируем reducer - React JS | 20:09 / 27:58
+// 90 - redux-ducks рефакторинг - React JS | 46:47 / 1:02:41
