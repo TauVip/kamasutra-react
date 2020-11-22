@@ -1,16 +1,22 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
-import { compose } from 'redux';
-import './App.css';
-import Preloader from './components/common/Preloader/Preloader';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import HeaderContainer from './components/Header/HeaderContainer';
-import LoginPage from './components/Login/Login';
-import Navbar from './components/Navbar/Navbar';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import { initializeApp } from './redux/app-reducer';
+import React from 'react'
+import { Component } from 'react'
+import { connect } from 'react-redux'
+import { Route, withRouter } from 'react-router-dom'
+import { compose } from 'redux'
+import './App.css'
+import Preloader from './components/common/Preloader/Preloader'
+import HeaderContainer from './components/Header/HeaderContainer'
+import LoginPage from './components/Login/Login'
+import Navbar from './components/Navbar/Navbar'
+import UsersContainer from './components/Users/UsersContainer'
+import { withSuspense } from './hoc/withSuspense'
+import { initializeApp } from './redux/app-reducer'
+
+// import DialogsContainer from './components/Dialogs/DialogsContainer';
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+
+// import ProfileContainer from './components/Profile/ProfileContainer'
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
 class App extends Component {
   componentDidMount() {
@@ -29,12 +35,12 @@ class App extends Component {
         <div className='app-wrapper-content'>
           <Route 
             path='/dialogs' 
-            render={ () => <DialogsContainer /> } 
+            render={ withSuspense(DialogsContainer) } 
           />
 
           <Route 
             path='/profile/:userId?' 
-            render={ () => <ProfileContainer /> } 
+            render={ withSuspense(ProfileContainer) } 
           />
 
           <Route 
@@ -58,4 +64,4 @@ const mapStateToProps = state => ({
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 90 - redux-ducks рефакторинг - React JS | 46:47 / 1:02:41
+// 95 - ReactJS + github pages, разворачиваем наш проект deploy | 13:20 / 1:05:42

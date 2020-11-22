@@ -1,14 +1,14 @@
 import { Field } from 'redux-form'
 import styles from './FormsControls.module.css'
 
-const FormControl = ({ input, meta: { touched, error }, children }) => {
-  const hasError = touched && error
+const FormControl = props => {
+  const hasError = props.meta.touched && props.meta.error
   return (
     <div className={styles.formControl + ' ' + (hasError ? styles.error : '')}>
       <div>
-        { children }
+        { props.children }
       </div>
-      { hasError && <span>{error}</span> }
+      { hasError && <span>{props.meta.error}</span> }
     </div>
   )
 }

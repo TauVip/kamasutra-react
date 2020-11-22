@@ -1,6 +1,6 @@
 import s from './Post.module.css';
 
-const Post = (props) => {
+const Post = props => {
   return (
     <div className={s.item}>
       <img src='http://pornzwezdy.ru/uploads/posts/2014-06/1402057502_b5296e4f6d3dbb33a40179df046b9c2c.17.jpg' />

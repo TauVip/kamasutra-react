@@ -6,8 +6,8 @@ import { required } from '../../utils/validators/validators'
 import { createField, Input } from '../common/FormsControls/FormsControls'
 import style from '../common/FormsControls/FormsControls.module.css'
 
-const LoginForm = ({ handleSubmit, error }) => (
-  <form onSubmit={handleSubmit}>
+const LoginForm = props => (
+  <form onSubmit={props.handleSubmit}>
     { createField('Email', 'email', [required], Input) }
 
     { createField('Password', 'password', [required], Input, {type: 'password'}) }
@@ -15,8 +15,8 @@ const LoginForm = ({ handleSubmit, error }) => (
     { createField(null, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me') }
 
     {
-      error && <div className={style.formSummaryError}>
-        {error}
+      props.error && <div className={style.formSummaryError}>
+        {props.error}
       </div>
     }
     <div>

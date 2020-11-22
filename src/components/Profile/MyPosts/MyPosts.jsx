@@ -7,7 +7,7 @@ import Post from './Post/Post'
 
 const maxLength = maxLengthCreator(10)
 
-let AddNewPostForm = (props) => (
+let AddNewPostForm = props => (
   <form onSubmit={props.handleSubmit}>
     <div>
       <Field 
