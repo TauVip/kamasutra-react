@@ -64,4 +64,4 @@ const mapStateToProps = state => ({
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 95 - ReactJS + github pages, разворачиваем наш проект deploy | 13:20 / 1:05:42
+// 97 - ReactJS - обновление профиля | 7:50 / 1:23:21
