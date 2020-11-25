@@ -64,4 +64,4 @@ const mapStateToProps = state => ({
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 97 - ReactJS - обновление профиля | 7:50 / 1:23:21
+// 99 - ReactJS - try-catch, router switch, classnames
