@@ -1,7 +1,7 @@
 import React from 'react'
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, withRouter } from 'react-router-dom'
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
 import Preloader from './components/common/Preloader/Preloader'
@@ -19,8 +19,16 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
 class App extends Component {
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert('Some error occured')
+    // console.error(promiseRejectionEvent)
+  }
   componentDidMount() {
     this.props.initializeApp()
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
   }
 
   render() {
@@ -33,25 +41,33 @@ class App extends Component {
         <HeaderContainer />
         <Navbar />
         <div className='app-wrapper-content'>
-          <Route 
-            path='/dialogs' 
-            render={ withSuspense(DialogsContainer) } 
-          />
-
-          <Route 
-            path='/profile/:userId?' 
-            render={ withSuspense(ProfileContainer) } 
-          />
-
-          <Route 
-            path='/users'
-            render={ () => <UsersContainer /> }
-          />
-
-          <Route 
-            path='/login'
-            render={ () => <LoginPage />}
-          />
+          <Switch>
+            <Route 
+              exact
+              path='/'
+              render={() => <Redirect to='/profile' />}
+            />
+            <Route 
+              path='/dialogs' 
+              render={ withSuspense(DialogsContainer) } 
+            />
+            <Route 
+              path='/profile/:userId?' 
+              render={ withSuspense(ProfileContainer) } 
+            />
+            <Route 
+              path='/users'
+              render={ () => <UsersContainer /> }
+            />
+            <Route 
+              path='/login'
+              render={ () => <LoginPage />}
+            />
+            <Route 
+              path='*'
+              render={() => <div>404 NOT FOUND</div>}
+            />
+          </Switch>
         </div>
       </div>
     )
@@ -63,5 +79,3 @@ const mapStateToProps = state => ({
 })
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
-
-// 99 - ReactJS - try-catch, router switch, classnames
