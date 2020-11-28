@@ -57,7 +57,7 @@ class App extends Component {
             />
             <Route 
               path='/users'
-              render={ () => <UsersContainer /> }
+              render={ () => <UsersContainer pageTitle={'Самураи'} /> }
             />
             <Route 
               path='/login'
@@ -79,3 +79,5 @@ const mapStateToProps = state => ({
 })
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
+
+// 06 - React + Redux + TypeScript, типизация Actions и Thunk / React JS - Путь Самурая 2.0 | 23:43 / 28:24
