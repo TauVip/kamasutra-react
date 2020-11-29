@@ -20,8 +20,7 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 class App extends Component {
   catchAllUnhandledErrors = (promiseRejectionEvent) => {
-    alert('Some error occured')
-    // console.error(promiseRejectionEvent)
+    console.error(promiseRejectionEvent)
   }
   componentDidMount() {
     this.props.initializeApp()
@@ -80,4 +79,4 @@ const mapStateToProps = state => ({
 
 export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 06 - React + Redux + TypeScript, типизация Actions и Thunk / React JS - Путь Самурая 2.0 | 23:43 / 28:24
+// 10 - React + TypeScript / Типизируем ВСЁ / React JS - Путь Самурая 2.0 | 0:00 / 1:46:43
