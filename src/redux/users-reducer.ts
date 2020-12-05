@@ -1,9 +1,8 @@
 import { Dispatch } from "react"
-import { ThunkAction } from "redux-thunk"
-import { usersAPI } from "../api/api"
+import { usersAPI } from "../api/users-api"
 import { UserType } from "../types/types"
 import { updateObjectInArray } from "../utils/object-helpers"
-import { AppStateType, InferActionsTypes } from "./redux-store"
+import { BaseThunkType, InferActionsTypes } from "./redux-store"
 
 let initialState = {
   users: [] as Array<UserType>,
@@ -59,7 +58,8 @@ export const actions = {
 }
 
 type DispatchType = Dispatch<ActionTypes>
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionTypes>
+type ThunkType = BaseThunkType<ActionTypes>
+
 export const requestUsers = (page: number, pageSize: number): ThunkType => (
   async (dispatch) => {
     dispatch(actions.setCurrentPage(page))

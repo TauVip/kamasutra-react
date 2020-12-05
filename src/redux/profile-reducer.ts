@@ -1,5 +1,5 @@
 import { stopSubmit } from "redux-form"
-import { profileAPI, usersAPI } from "../api/api"
+import { profileAPI } from "../api/profile-api"
 import { PhotosType, PostType, ProfileType } from "../types/types"
 
 const ADD_POST = 'ADD-POST'
@@ -92,19 +92,19 @@ type SavePhotoSuccessActionType = {
 export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessActionType => ({ type: SAVE_PHOTO_SUCCESS, photos })
 
 export const getUserProfile = (userId: number) => async (dispatch: any) => {
-  const response = await usersAPI.getProfile(userId)
-  dispatch(setUserProfile(response.data))
+  const data = await profileAPI.getProfile(userId)
+  dispatch(setUserProfile(data))
 }
 
 export const getStatus = (userId: number) => async (dispatch: any) => {
   const response = await profileAPI.getStatus(userId)
-  dispatch(setStatus(response.data))
+  dispatch(setStatus(response))
 }
 
 export const updateStatus = (status: string) => async (dispatch: any) => {
   try {
     const response = await profileAPI.updateStatus(status)
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === 0) {
       dispatch(setStatus(status))
     }
   } catch(error) {
@@ -115,8 +115,8 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
 export const savePhoto = (file: any) => async (dispatch: any) => {
   const response = await profileAPI.savePhoto(file)
 
-  if (response.data.resultCode === 0) {
-    dispatch(savePhotoSuccess(response.data.data.photos))
+  if (response.resultCode === 0) {
+    dispatch(savePhotoSuccess(response.data.photos))
   }
 }
 
@@ -124,11 +124,11 @@ export const saveProfile = (profile: ProfileType) => async (dispatch: any, getSt
   const userId = getState().auth.userId
   const response = await profileAPI.saveProfile(profile)
 
-  if (response.data.resultCode === 0) {
+  if (response.resultCode === 0) {
     dispatch(getUserProfile(userId))
   } else {
-    dispatch(stopSubmit('edit-profile', {_error: response.data.messages[0]}))
-    return Promise.reject(response.data.messages[0])
+    dispatch(stopSubmit('edit-profile', {_error: response.messages[0]}))
+    return Promise.reject(response.messages[0])
   }
 }
 
