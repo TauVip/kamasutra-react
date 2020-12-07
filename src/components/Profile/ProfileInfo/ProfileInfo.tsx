@@ -8,7 +8,7 @@ import ProfileDataForm from './ProfileDataForm'
 import { ContactsType, ProfileType } from '../../../types/types'
 
 type PropsType = { 
-  profile: ProfileType
+  profile: ProfileType | null
   savePhoto: (file: File) => void
   saveProfile: (profile: ProfileType) => Promise<any>
   isOwner: boolean

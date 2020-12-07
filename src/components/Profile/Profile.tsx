@@ -1,8 +1,17 @@
 import React from 'react'
+import { ProfileType } from '../../types/types'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
-const Profile = (props) => {
+type PropsType = { 
+  profile: ProfileType | null
+  savePhoto: (file: File) => void
+  saveProfile: (profile: ProfileType) => Promise<any>
+  isOwner: boolean
+  status: string
+  updateStatus: (status: string) => void 
+}
+const Profile: React.FC<PropsType> = (props) => {
   return (
     <div>
       <ProfileInfo 
