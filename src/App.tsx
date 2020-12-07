@@ -86,4 +86,4 @@ const mapStateToProps = (state: AppStateType) => ({
 
 export default compose<React.ComponentType>(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 13 - React + TypeScript / Formik / React JS - Путь Самурая 2.0 | 12:59
+// 13 - React + TypeScript / Formik / React JS - Путь Самурая 2.0 | 22:09
