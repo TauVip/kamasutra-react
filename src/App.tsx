@@ -6,9 +6,9 @@ import { compose } from 'redux'
 import './App.css'
 import Preloader from './components/common/Preloader/Preloader'
 import HeaderContainer from './components/Header/HeaderContainer'
-import LoginPage from './components/Login/Login'
+import { LoginPage } from './components/Login/Login'
 import Navbar from './components/Navbar/Navbar'
-import UsersContainer from './components/Users/UsersContainer'
+import { UsersPage } from './components/Users/UsersContainer'
 import { withSuspense } from './hoc/withSuspense'
 import { initializeApp } from './redux/app-reducer'
 import { AppStateType } from './redux/redux-store'
@@ -63,7 +63,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
             />
             <Route 
               path='/users'
-              render={ () => <UsersContainer pageTitle={'Самураи'} /> }
+              render={ () => <UsersPage pageTitle={'Самураи'} /> }
             />
             <Route 
               path='/login'
@@ -86,4 +86,4 @@ const mapStateToProps = (state: AppStateType) => ({
 
 export default compose<React.ComponentType>(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 13 - React + TypeScript / Formik / React JS - Путь Самурая 2.0 | 22:09
+// 15 - Hooks, оно нам надо? / React TypeScript - Путь Самурая 2.0 | 22:51
