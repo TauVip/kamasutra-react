@@ -1,23 +1,21 @@
-import React from 'react'
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
+import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
 import 'antd/dist/antd.css'
 import Preloader from './components/common/Preloader/Preloader'
-import HeaderContainer from './components/Header/HeaderContainer'
+import {Header} from './components/Header/Header'
 import { LoginPage } from './components/Login/Login'
-import Navbar from './components/Navbar/Navbar'
 import { UsersPage } from './components/Users/UsersContainer'
 import { withSuspense } from './hoc/withSuspense'
 import { initializeApp } from './redux/app-reducer'
 import { AppStateType } from './redux/redux-store'
 
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Row, Col } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 // import DialogsContainer from './components/Dialogs/DialogsContainer';
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
@@ -50,36 +48,34 @@ class App extends Component<MapPropsType & DispatchPropsType> {
 
     return (
       <Layout>
-          <Header className="header">
-            <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-              <Menu.Item key="1">nav 1</Menu.Item>
-              <Menu.Item key="2">nav 2</Menu.Item>
-              <Menu.Item key="3">nav 3</Menu.Item>
-            </Menu>
-          </Header>
-          <Content style={{ padding: '0 50px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
-              <Sider className="site-layout-background" width={200}>
-                <Menu
-                  mode="inline"
-                  defaultSelectedKeys={['1']}
-                  defaultOpenKeys={['sub1']}
-                  style={{ height: '100%' }}
-                >
-                <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-                  <Menu.Item key="1">option1</Menu.Item>
-                  <Menu.Item key="2">option2</Menu.Item>
+        <Header />
+        <Content style={{ padding: '0 50px' }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
+            <Sider className="site-layout-background" width={200}>
+              <Menu
+                mode="inline"
+                defaultSelectedKeys={['1']}
+                style={{ height: '100%' }}
+              >
+                <SubMenu key="sub1" icon={<UserOutlined />} title="My Profile">
+                  <Menu.Item key="1">
+                    <Link to='/profile'>Profile</Link>
+                  </Menu.Item>
+                  <Menu.Item key="2">
+                    <Link to='/dialogs'>Messages</Link>
+                  </Menu.Item>
                   <Menu.Item key="3">option3</Menu.Item>
                   <Menu.Item key="4">option4</Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
-                  <Menu.Item key="5">option5</Menu.Item>
+                <SubMenu key="sub2" icon={<LaptopOutlined />} title="Developers">
+                  <Menu.Item key="5">
+                    <Link to='/developers'>Developers</Link>
+                  </Menu.Item>
                   <Menu.Item key="6">option6</Menu.Item>
                   <Menu.Item key="7">option7</Menu.Item>
                   <Menu.Item key="8">option8</Menu.Item>
@@ -92,46 +88,39 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                 </SubMenu>
               </Menu>
             </Sider>
-            <Content style={{ padding: '0 24px', minHeight: 280 }}>Content</Content>
+            <Content style={{ padding: '0 24px', minHeight: 280 }}>
+              <Switch>
+                <Route 
+                  exact
+                  path='/'
+                  render={() => <Redirect to='/profile' />}
+                />
+                <Route 
+                  path='/dialogs' 
+                  render={() => <SuspendedDialogs /> } 
+                />
+                <Route 
+                  path='/profile/:userId?' 
+                  render={() => <SuspendedProfile /> } 
+                />
+                <Route 
+                  path='/developers'
+                  render={ () => <UsersPage pageTitle={'Самураи'} /> }
+                />
+                <Route 
+                  path='/login'
+                  render={ () => <LoginPage />}
+                />
+                <Route 
+                  path='*'
+                  render={() => <div>404 NOT FOUND</div>}
+                />
+              </Switch>
+            </Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: 'center' }}>Samurai Social Network ©2020 Created by IT-KAMASUTRA</Footer>
       </Layout>
-      /*
-      <div className='app-wrapper'>
-        <HeaderContainer />
-        <Navbar />
-        <div className='app-wrapper-content'>
-          <Switch>
-            <Route 
-              exact
-              path='/'
-              render={() => <Redirect to='/profile' />}
-            />
-            <Route 
-              path='/dialogs' 
-              render={() => <SuspendedDialogs /> } 
-            />
-            <Route 
-              path='/profile/:userId?' 
-              render={() => <SuspendedProfile /> } 
-            />
-            <Route 
-              path='/users'
-              render={ () => <UsersPage pageTitle={'Самураи'} /> }
-            />
-            <Route 
-              path='/login'
-              render={ () => <LoginPage />}
-            />
-            <Route 
-              path='*'
-              render={() => <div>404 NOT FOUND</div>}
-            />
-          </Switch>
-        </div>
-      </div>
-      */
     )
   }
 }
@@ -142,4 +131,4 @@ const mapStateToProps = (state: AppStateType) => ({
 
 export default compose<React.ComponentType>(withRouter, connect(mapStateToProps, { initializeApp }))(App)
 
-// 17 - React + Ant Design / Antd / React JS - Путь Самурая 2.0 | 12:55
+// 17 - React + Ant Design / Antd / React JS - Путь Самурая 2.0
